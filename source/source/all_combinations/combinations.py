@@ -10,7 +10,7 @@ def combinations(mylist):
   3. Get all combinations without first element included 
   4. Add first element to each combination
   3. continue step #1 to #4 until the list if divided into the following two parts -
-     (i) first element becomes the last element.
+     (i) last element is the first element
      (ii) there are no rest of the elements pending (empty list) --> Base condition to return.
   """
   first_element = mylist[0]
