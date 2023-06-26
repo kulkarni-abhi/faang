@@ -8,7 +8,10 @@ def combinations(mylist):
   combos = combinations(others)
 
   for combo in combos:
+    #combinations without first element
     result.append(combo)
+
+    #combinations with first element
     result.append(first + combo)
 
   return result
