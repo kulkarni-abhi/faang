@@ -1,29 +1,103 @@
 def combinations(mylist):
-  #list reducing technique.
   if len(mylist) == 0:
     return [[]]
 
-  """
-  1. divide list into two parts
-     i.e. first element and rest of the elements.
-  2. pass rest of the elements again to the recursive function
-  3. Get all combinations without first element included 
-  4. Add first element to each combination
-  3. continue step #1 to #4 until the list if divided into the following two parts -
-     (i) last element is the first element i.e. ['C']
-     (ii) there are no rest of the elements pending (empty list) --> Base condition to return.
-  """
-  first_element = mylist[0]
-  other_elements = mylist[1:]
+  first = [mylist[0]]
+  others = mylist[1:]
+  result = []
+  combos = combinations(others)
 
-  all_combinations = list()
-  combinations_without_first_element = combinations(other_elements)
+  for combo in combos:
+    result.append(combo)
+    result.append(first + combo)
 
-  for comb_without_first in combinations_without_first_element:
-    comb_with_first = [first_element] + comb_without_first
-    all_combinations.append(comb_with_first)
-    all_combinations.append(comb_without_first)
-  return all_combinations
+  return result
 
-print(combinations(['A', 'B', 'C']))
-    
+xlist = ['A', 'B', 'C']
+combos = combinations(xlist)
+
+for _ in combos:
+  print(_)
+
+
+"""
+Total combinations of r elements from in the list of n elements..
+
+combinations formula
+--------------------
+
+                      n!
+       C(n,r) = -------------
+                 (n-r)! x r!
+
+
+In above case, 
+	n = 3
+        r = Not Given, find all combinations.
+	    i.e.  combinations of 0 elements i.e  []
+                + combinations of 1 elements i.e. [A], [B], [C]
+                + combinations of 2 elements i.e. [A, B], [A, C], [B, C]
+                + combinations of 3 elements i.e. [A, B, C]
+
+i.e. Get all possible combinations of 0 elements
+	n = 3
+        r = 0
+
+                          3!
+        C(3,0) =   ---------------
+                     0! x (3-0)!
+
+                     3!
+        C(3,0) =   ------ = 1
+                     3!
+
+
+  similarly,
+      
+        C(3,1) = 3
+        C(3,2) = 3
+        C(3,3) = 1
+
+  Hence, all combinations = C(3,0) + C(3,1) + C(3,2) + C(3,3)
+                          = 1 + 3 + 3 + 1
+       Total combinations = 8
+
+[], [A], [B], [C], [AB], [AC], [BC], [ABC]
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+   
+      Do not add element --> Goto Left (If not added, carry forward the previous list to the next level.
+             Add Element --> Goto Right
+					
+                                            
+       							                        [ ]
+							                         |
+							                         |
+				                ,---------------------------------------------------------------,
+			                	|					                 	|
+				                |						                |
+			                       [ ]					                       [A]
+				                |						                |
+				                |						                |
+		          ,-----------------------------------,		                   ,---------------------------------------,
+		          |     		              |		                   |				           |
+	                 [ ]			             [B]                          [A]                                     [AB]
+                          |                                   |                            |                                       |
+                          |                                   |                            |                                       |
+                ,------------------,               ,-------------------,           ,--------------,                       ,----------------,
+                |                  |               |                   |           |              |                       |                |
+                |                  |               |                   |           |              |                       |                |
+               [ ]                [C]             [B]                [BC]         [A]           [A,C]                   [A,B]           [A,B,C]
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Time Complexity = 2^n
+
+"""
