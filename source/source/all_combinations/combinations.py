@@ -1,26 +1,23 @@
 def combinations(mylist):
-  if len(mylist) == 0:
-    return [[]]
-
-  first = [mylist[0]]
-  others = mylist[1:]
-  result = []
-  combos = combinations(others)
-
-  for combo in combos:
-    #combinations without first element
-    result.append(combo)
-
-    #combinations with first element
-    result.append(first + combo)
-
-  return result
+	if len(mylist) == 0:
+		return [[]]
+	first = [mylist[0]]
+	others = mylist[1:]
+	result = []
+	combos = combinations(others)
+	
+	for combo in combos:
+		#combinations without first element
+		result.append(combo)
+		#combinations with first element
+		result.append(first + combo)
+	return result
 
 xlist = ['A', 'B', 'C']
 combos = combinations(xlist)
 
 for _ in combos:
-  print(_)
+	print(_)
 
 
 """
