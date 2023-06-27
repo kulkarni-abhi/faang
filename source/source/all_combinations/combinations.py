@@ -2,6 +2,10 @@
 Leetcode #78
 https://leetcode.com/problems/subsets/
 
+The fastest Solution with backtracking -
+https://www.youtube.com/watch?v=REOH22Xwdkk
+
+
 
 Given an integer array nums of unique elements, return all possible 
 subsets (the power set).
