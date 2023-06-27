@@ -1,3 +1,34 @@
+"""
+Similar to Leetcode - 77
+The only difference is, in leetcode problem, the range of elements is given i.e. 1 to n
+We actually used the ready list.
+
+
+Given two integers n and k, return all possible combinations of k numbers chosen from the range [1, n].
+
+You may return the answer in any order.
+
+ 
+
+Example 1:
+
+Input: n = 4, k = 2
+Output: [[1,2],[1,3],[1,4],[2,3],[2,4],[3,4]]
+Explanation: There are 4 choose 2 = 6 total combinations.
+Note that combinations are unordered, i.e., [1,2] and [2,1] are considered to be the same combination.
+Example 2:
+
+Input: n = 1, k = 1
+Output: [[1]]
+Explanation: There is 1 choose 1 = 1 total combination.
+ 
+
+Constraints:
+
+1 <= n <= 20
+1 <= k <= n
+"""
+
 def combinations(mylist, r):
     if r == 0:
         return [[]]
@@ -28,6 +59,24 @@ def subsets(mylist, r):
 	dfs(0, [])
 	return result
 
+def leetcode(n, r):
+	"""
+ 	Faster solution using backtracking
+        """
+	result = []
+	def dfs(start, comb):
+		if len(comb) == r:
+			result.append(comb.copy())
+			return
+		for i in range(start, n+1):
+			comb.append(i)
+			dfs(i+1, comb)
+			comb.pop()
+
+	# In the leetcode problems, it is clearly asked that element in range 1 to n.
+	# so not starting from 0, and upto n+1 so that n is also included.
+	dfs(1, [])
+	return result
 xlist = ['a', 'b', 'c']
 
 print(combinations(xlist, 2))
