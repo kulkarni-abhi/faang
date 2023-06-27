@@ -1,4 +1,8 @@
 def combinations(mylist):
+	"""
+ 	This solution is slow
+        Execution time = 63 ms
+	"""
 	if len(mylist) == 0:
 		return [[]]
 	first = [mylist[0]]
@@ -13,12 +17,39 @@ def combinations(mylist):
 		result.append(first + combo)
 	return result
 
-xlist = ['A', 'B', 'C']
-combos = combinations(xlist)
 
+def subsets(mylist):
+
+        """
+        Faster Solution using backtracking.
+        """
+        result = []
+        subset = []
+
+        def dfs(idx):
+                if idx >= len(mylist):
+                        result.append(subset.copy())
+                        return
+
+                #Right Tree... Include element
+                subset.append(mylist[idx])
+                dfs(idx + 1)
+
+                #Left Tree.. Do not include element
+                subset.pop()
+                dfs(idx + 1)
+        dfs(0)
+        return result
+	
+xlist = ['A', 'B', 'C']
+
+combos = combinations(xlist)
 for _ in combos:
 	print(_)
 
+combos = subsets(xlist) #Faster solution
+for _ in combos:
+	print(_)
 
 """
 Total combinations of r elements from in the list of n elements..
