@@ -14,21 +14,19 @@ def combinations(mylist, r):
 
 def subsets(mylist, r):
 	"""
-    Faster solution by backtracking
-	"""
-    result = []
-    def dfs(start, comb):
-        if len(comb) == r:
-            result.append(comb.copy())
-            return
-
-        for i in range(start, len(mylist)):
-            comb.append(mylist[i])
-            dfs(i+1, comb)
-            comb.pop()
-
-    dfs(0, [])
-    return result
+ 	Faster solution using backtracking
+        """
+	result = []
+	def dfs(start, comb):
+		if len(comb) == r:
+			result.append(comb.copy())
+			return
+		for i in range(start, len(mylist)):
+			comb.append(mylist[i])
+			dfs(i+1, comb)
+			comb.pop()
+	dfs(0, [])
+	return result
 
 xlist = ['a', 'b', 'c']
 
