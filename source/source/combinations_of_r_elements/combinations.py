@@ -68,7 +68,7 @@ In above case,
                      	
   Returns:  <----------------- comb([B,C], 1)                                  comb([C], 1) -----> Returns: 		comb([], 1) ---> Returns: [[]]
                                --------------                                  -------------       [[C]]		------------
-  [[B], [C]]                         |i=0                                             |i=1	   Add first            (List ended)
+  [[B], [C]]                         |                                                |i=0	   Add first            (List ended)
   Append first                       |                                                |            element
   to each one        ,-------------------------------,                                |            (BC)
   (AB, AC)           |i=0                            |i=1                             |
