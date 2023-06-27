@@ -8,16 +8,32 @@ def combinations(mylist, r):
         first  = [ mylist[i] ]
         others = mylist[i+1:]
         combos = combinations(others, r-1)
-        print("{0},{1},{2},{3}".format(first, others, combos,r))
         for combination in combos:
             result.append(first + combination)
     return result
 
+def subsets(mylist, r):
+	"""
+    Faster solution by backtracking
+	"""
+    result = []
+    def dfs(start, comb):
+        if len(comb) == r:
+            result.append(comb.copy())
+            return
+
+        for i in range(start, len(mylist)):
+            comb.append(mylist[i])
+            dfs(i+1, comb)
+            comb.pop()
+
+    dfs(0, [])
+    return result
 
 xlist = ['a', 'b', 'c']
 
 print(combinations(xlist, 2))
-
+print(subsets(xlist, 2))
 
 
 """
