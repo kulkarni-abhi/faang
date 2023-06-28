@@ -1,0 +1,22 @@
+1. The formula to get the total combinations is nCr (where, n = total of elements in the list, r = size of each combination)
+  
+                    n!
+        nCr = ------------
+               (n-r)! x r!
+
+2. The combination problem can be solved using binary tree's Depth First Search (backtracking) algorithm.
+
+3. At every element, we take two decisions (include or skip elemnt). Hence, time complexity = 2^n or 2^t (number of elements or depth of the tree). 
+4. Also, the space complexity will be the same because of the recursion stack. Space complexity : 2^n or 2^t
+
+4. How to build a logic?
+    There is a only logic that can be applied to combinations problems is - 
+      a. Traverse the list of elements
+      b. Take a decision wheather 
+           i. element should be added to the subset/combination or 
+          ii. element should not be added to the subset/combination and move to the next element
+      c. If a condition is provided, e.g. sum or size of subset/combination should be K,
+           i. If condition matched for the current subset, append it to the result (Base Case #1)
+          ii. or if list is exhausted, return nothing (Base Case #2)
+          ii. if not matched, continue recursively and keep on adding list element to the current subset
+         iii. If current subset exceeds the condition, pop the last element and backtrack. e.g sum > target or less than 0
