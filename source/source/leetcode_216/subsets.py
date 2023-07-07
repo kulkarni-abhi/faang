@@ -6,6 +6,7 @@ https://leetcode.com/problems/combination-sum-iii/
 Fastest Solution ->
 https://www.youtube.com/watch?v=J2hcPZRpbMk
 
+Combinations of K elements between 1 to 10 that sum up to N.
 
 Problem statement -
 -------------------
@@ -13,6 +14,7 @@ Find all valid combinations of k numbers that sum up to n such that the followin
 
 Only numbers 1 through 9 are used.
 Each number is used at most once.
+
 Return a list of all possible valid combinations. The list must not contain the same combination twice, and the combinations may be returned in any order.
 
  
