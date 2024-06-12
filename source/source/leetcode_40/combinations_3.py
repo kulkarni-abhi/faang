@@ -43,35 +43,33 @@ Constraints:
 
 """
 
-def combination_sum(mylist, target):
-    mylist.sort()
-    result = []
+class Solution:
+    def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
+        candidates.sort()
+        result = []
 
-    def dfs(comb, position, target):
-        if target == 0:
-            result.append(comb.copy())
+        def dfs(comb, position, target):
+            if target == 0:
+                result.append(comb.copy())
 
-        if target <= 0:
-            return
+            if target <= 0:
+                return
 
 
-        previous = -1
-        for i in range(position, len(mylist)):
-            if mylist[i] == previous:
-                continue
+            previous = -1
+            for i in range(position, len(candidates)):
+                if candidates[i] == previous:
+                    continue
 
-            comb.append(mylist[i])
-            dfs(comb, i+1, target - mylist[i])
-            comb.pop()
-            previous = mylist[i]
+                comb.append(candidates[i])
+                dfs(comb, i+1, target - candidates[i])
+                comb.pop()
+                previous = candidates[i]
 
-    dfs([], 0, target)
-    return result
+        dfs([], 0, target)
+        return result
 
-xlist = [ 10, 1, 2, 7, 6, 1]
-target = 8
-for _ in combination_sum(xlist, target):
-    print(_)
+
 
 """
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
